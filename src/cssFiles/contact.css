@@ -1,0 +1,120 @@
+/* Default styles for contact section */
+.contact-section {
+    height: 100vh;
+    background-color: rgb(34, 33, 33);
+    color: white;
+    padding: 40px 20px 60px 20px;
+    display: flex;
+    border-top: 2px solid lightgray;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info {
+    width: 50%;
+    height: min(600px,40%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding-top: 10px;
+}
+
+#contact-heading {
+    font-size: 1.5em;
+    color: gold;
+}
+
+.contact-form {
+    width: clamp(450px,250px,50%);
+    height: clamp(450px,200px,40%);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.9);
+    padding: 10px 20px 20px 20px;
+    background-color: rgb(27, 27, 27);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-form h2 {
+    color: #16a34a;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    color: white;
+    font-size: 16px;
+}
+
+.textarea-field {
+    height: 100px;
+}
+
+/* Style for input elements when in focus */
+input:focus {
+    border-color: rgba(22, 238, 112);; /* Change border color */
+    box-shadow: 0 0 5px rgba(22, 238, 112, 0.5); /* Add box shadow */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Additional styles for textarea when in focus */
+textarea:focus {
+    border-color: rgba(22, 238, 112); /* Change border color */
+    box-shadow: 0 0 5px rgba(22, 238, 112, 0.5); /* Add box shadow */
+    outline: none; /* Remove default focus outline */
+}
+
+
+.submit-button {
+    background-color: black;
+    color: white;
+    padding: .5em 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: darkgray;
+}
+
+#contact-form-heading {
+    text-align: center;
+}
+
+/* Styles for small-screen devices */
+@media screen and (max-width: 768px) {
+    .contact-section {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+    }
+
+
+    .contact-info {
+        height: 40%;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+          
+    }
+    
+    .contact-form {
+        height: min(400px,70%);
+        margin-top: 20px;
+        width: min(350px,70%);
+    }
+
+    .input-field,
+    .textarea-field {
+        margin-bottom: 10px;
+    }
+}

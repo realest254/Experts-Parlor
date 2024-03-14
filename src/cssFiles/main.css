@@ -1,0 +1,377 @@
+/* Reset styles */
+@font-face {
+    font-family: 'cinzel'; /* Specify the name you want to use for the font */
+    src: url('../fonts/CinzelDecorative-Black.ttf') format('ttf');
+    font-weight: normal; /* Specify the font weight */
+    font-style: normal; /* Specify the font style */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Homepage container */
+.homepage {
+    height: 100svh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.home {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+
+.home h1 {
+    text-wrap: nowrap;
+    line-height: 1.2em;
+}
+
+.navigation {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0); /* White background with opacity */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    color: black; /* Black text color */
+    border-bottom: 1px solid rgba(247, 243, 243, 0); /* Black border bottom */
+    width: 100%;
+    height: 15%;
+    z-index: 1000; /* Ensure navigation stays on top */
+}
+
+.navigation .large-screen a {
+    text-decoration: none;
+    color: white; /* Black color for text */
+    font-size: 1em;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.navigation nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Hamburger menu styles */
+.hamburger-menu {
+    cursor: pointer;
+    display: none;
+    height: 25px;
+    width: 25px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+
+
+/* Active state for hamburger menu */
+.hamburger-menu.active .bar:nth-child(1) {
+    animation: ease .7s top forwards;
+}
+.hamburger-menu.inactive .bar:nth-child(1) {
+    animation: ease .7s bottom-2 forwards;
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    animation: ease .7s scaled forwards;
+}
+.hamburger-menu.inactive .bar:nth-child(2) {
+    animation: ease .7s scaled-2 forwards;;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    animation: ease .7s bottom forwards;
+}
+.hamburger-menu.inactive .bar:nth-child(3) {
+    animation: ease .7s bottom-2 forwards;
+}
+
+@keyframes top {
+    0% {
+        top: 0;
+        transform: rotate(0);
+    }
+    50% {
+        top: 22px;
+        transform: rotate(0);
+    }
+    100% {
+        top: 22px;
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+}
+@keyframes top-2 {
+    0% {
+      top: 22px;
+      transform: rotate(45deg);
+    }
+    50% {
+      top: 22px;
+      transform: rotate(0deg);
+    }
+    100% {
+      top: 0;
+      transform: rotate(0deg);
+    }
+  }
+
+@keyframes scaled {
+    50% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes scaled-2 {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+
+@keyframes bottom {
+    0% {
+        bottom: 0;
+        transform: rotate(0);
+    }
+    50% {
+        bottom: 22px;
+        transform: rotate(0);
+    }
+    100% {
+        bottom: 22px;
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+@keyframes bottom-2 {
+    0% {
+      bottom: 22px;
+      transform: rotate(45deg);
+    }
+    50% {
+      bottom: 22px;
+      transform: rotate(0);
+    }
+    100% {
+      bottom: 0;
+      transform: rotate(0);
+    }
+  }
+
+/* Large screen navigation */
+.large-screen ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Styles for the 'X' icon */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Media query for small screens */
+@media screen and (max-width: 768px) {
+    .navigation.small-screen.inactive {
+        display: none;
+    }
+    .navigation {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+    
+    .small-screen ul {
+        position: absolute;
+        top: 45px;
+        right: 5px;
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .homepage {
+        background-size: cover;
+        background-position: left;
+        }
+    .home h1 {
+        text-wrap: nowrap;
+        line-height: 1.8em;
+        font-family: 'cinzel';
+        font-size: 2em; /* Adjust font size as needed */
+        margin-bottom: 10px; /* Add spacing between h1 and p tag */
+        margin-left: 5%;
+        color: gold; /* Adjust text color */
+    }
+    .small-screen.inactive {
+        display: none;
+    }
+    .small-screen a:hover {
+        color: gold; /* Darker color on hover */
+    }
+    
+    .navigation nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5em;
+        width: 70vw;
+        height: 80vh;
+        background-color: rgba(0, 0, 0, 0.6); /* Background color */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        padding: 10px; /* Padding around the list items */
+    }
+    
+    .navigation nav ul li {
+        margin-right: 10px; /* Margin between list items */
+    }
+    
+    .navigation nav ul li:last-child {
+        margin-right: 0; /* No margin for the last list item */
+    }
+    
+    .navigation nav ul li a {
+        text-decoration: none;
+        color: white; /* Text color */
+        font-weight: bolder;
+        padding: 8px 15px; /* Padding for each list item */
+        border-radius: 5px; /* Rounded corners for each list item */
+        font-size: 1.2em;
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+    
+    .navigation nav ul li a:hover {
+        color: gold; /* Background color on hover */
+    }
+    .small-screen {
+        display: block;
+    }
+    
+}
+
+/* Media query for screens larger than 768px */
+@media screen and (min-width: 769px) {
+    .hamburger-menu {
+        display: none;
+    }
+    .large-screen{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .large-screen ul {
+        width: 100%;
+        gap: 50px;
+    }
+
+    .large-screen ul li{
+        font-size: 1em;
+    }
+    
+    .navigation a:hover {
+        color: gold; /* Darker color on hover */
+    }
+    .home h1 {
+        font-family: 'cinzel';
+        font-size: 3em; /* Adjust font size as needed */
+        margin-bottom: 10px; /* Add spacing between h1 and p tag */
+        margin-left: 5%;
+        color: gold; /* Adjust text color */
+    }
+    .homepage {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+
+.home p {
+    margin-left: 5% ;
+    font-size: 1.8rem; /* Adjust font size as needed */
+    color: lightgray; /* Adjust text color */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+.separator {
+    border-bottom: 3px dotted white; /* Adjust the color and style as per your design */
+    margin-bottom: 10px; /* Adjust the margin between the separator and the text */
+    width: 40%; /* Ensure the separator spans the entire width of the container */
+    margin-left:5% ;
+}
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+/* Add this at the end of your CSS */
+
+/* Back to top icon */
+.back-to-top {
+    position: fixed;
+    bottom: 35px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+}
+.back-to-top img {
+    filter: brightness(5) invert(1) grayscale(1);
+    z-index:999;
+}
+.back-to-top:hover {
+    background-color: gold;
+}
+
+

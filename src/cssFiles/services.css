@@ -1,0 +1,77 @@
+/* CSS for Large Screens */
+.services-section {
+    background-color: rgb(34, 33, 33);
+}
+.services-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.services-section h2{
+    text-align: center;
+    color: gold;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+.service-container {
+    width: 45%;
+    height: 250px;
+    max-height: 250px;
+    margin-bottom: 20px;
+    background-color: #292828; /* Matching color for the div */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow effect */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    transition: all 0.3s ease; /* Smooth transition on hover */
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.service-container:hover {
+    transform: scale(1.05); /* Enlarge on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+}
+
+.service-container .service-image {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-container .service-image img {
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px 0 0 10px; /* Rounded corners on the left */
+}
+
+.service-container .service-description {
+    width: 70%;
+    padding: 20px;
+    color: #e2e8f0;
+}
+
+.service-container .service-description h4 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-style: italic;
+    color: #BAB86C;
+}
+
+.service-container .service-description p {
+    font-size: 1em;
+}
+
+/* CSS for Small Screens */
+@media screen and (max-width: 768px) {
+    .service-container {
+        width: 90%;
+        height: 260px;
+        max-height: 260px;
+        min-height: 250px;
+    }
+}

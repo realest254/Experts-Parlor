@@ -1,0 +1,251 @@
+/* Common styles */
+.testimonial-container {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../images/testimonyGg.jpeg');
+    background-size: cover;
+}
+.testimonial-container h2 {
+    color: gold;
+    font-size: 1.4em;
+}
+
+
+@media screen and (min-width: 769px) {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Start with no shadow */
+        }
+        to {
+            opacity: 1;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.9); /* End with the desired shadow */
+        }
+    }
+    .testimonial {
+        display: none;
+        position: relative;
+        width: min(400px, 50%);
+        height: 50%;
+        background-color: #083344;
+        border-radius: 20px;
+        padding: 10px;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity .5s ease, box-shadow 10s ease; /* Add transition for opacity and box shadow */
+        animation: fadeIn 2s ease forwards; /* Apply fade-in animation */
+        transition: transform .5s ease;
+    }
+    @keyframes animate {
+        0% {
+            opacity: 0;
+            transform: rotate(45deg) translate(10px , 10px);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: rotate(45deg) translate(12px, 12px);
+        }
+    }
+}
+
+
+
+.testimonial.active {
+    width: min(400px ,50%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    opacity: 1;
+    gap: 1.5em;
+}
+
+.testimonial p {
+    font-style: italic;
+}
+
+.testimonial img {
+    width: 40%;
+    height: 40%;
+    margin: 10px;
+    border-radius: 50%;
+    border: 2px solid white; /* Add border to make the image circular */
+}
+
+.testimonial.active p{
+    color: white;
+    padding: .5em;
+}
+.inner-card h4 {
+    font-size: 24px; /* Example font size */
+    color: gold;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: no-wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.inner-card h4::before,
+.inner-card h4::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 20%; /* Adjust the length of the lines */
+    height: 2px; /* Adjust the thickness of the lines */
+    background-color: gold; /* Adjust the color of the lines */
+    z-index: -1; 
+}
+
+.inner-card h4::before {
+    left: 0;
+}
+
+.inner-card h4::after {
+    right: 0;
+}
+
+
+.prevBtn,
+.nextBtn {
+    position: absolute; /* Change to fixed position */
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Align horizontally */
+    align-items: center; /* Align vertically */
+    z-index: 1000; /* Ensure the buttons appear above other content */
+}
+
+.prevBtn {
+    left: 10%;
+    transform: translateY(-50%) rotate(90deg); /* Adjust rotation */
+}
+
+.nextBtn {
+    right: 10%; /* Adjust position as needed */
+    transform: translateY(-50%) rotate(270deg); /* Adjust rotation */
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.arrow span {
+    position: absolute; /* Position spans absolutely */
+    width: 3vw;
+    height: 3vw;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    transform: rotate(45deg);
+    margin: auto; /* Center the spans within the arrow container */
+    animation: animate 3s infinite;
+}
+.arrow span:nth-child(1) {
+    
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotate and center the spans */
+    animation-delay: -0.1s;
+}
+
+.arrow span:nth-child(2) {
+    
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotate and center the spans */
+    animation-delay: -0.1s;
+}
+
+.arrow span:nth-child(3) {
+    
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotate and center the spans */
+    animation-delay: -0.4s;
+}
+
+
+@media screen and (max-width: 768px) {
+    .prevBtn,
+    .nextBtn {
+        display: none; /* Hide navigation buttons on small screens */
+    }
+    .testimonial-container {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: url('../images/testimonyGg.jpeg');
+        background-size: cover;
+    }
+
+    .testimonial {
+        display: none;
+        position: relative;
+        width: 75%; /* Adjust as needed */
+        height: 50%; /* Adjust as needed */
+        background-color: #083344;
+        border-radius: 20px;
+        padding: 10px;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .testimonial-container h2 {
+        color: gold;
+        font-size: 1.5em;
+        margin-bottom: 1.5em;
+        margin-top: 3em;
+        white-space: nowrap;
+    }
+
+    /* Add animation for indicators */
+    .indicator {
+        transition: background-color 0.3s ease;
+    }
+    .indicators {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .testimonial {
+        width: 100%;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    .indicator.active {
+        background-color: gold;
+    }
+    .testimonial img {
+        width: 50%;
+        height: auto;
+        border-radius: 50%;
+    }
+}
