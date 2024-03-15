@@ -14,11 +14,12 @@ export default function createServicesSection() {
     sectionTitle.textContent = "We upscale your business by:";
     servicesSection.appendChild(sectionTitle);
 
+    // Create a main div to house the cards
     const servicesContainer = document.createElement('div');
     servicesContainer.classList.add('services-container');
 
     // Service 1
-    const service1 = createService("Copywriting", "We boost your business with tailored email marketing with compelling content, brand voice, increasing sales and conversions with persuasive copy.", img4, "Copywriting service image");
+    const service1 = createService("Copywriting", "We boost your business with tailored email marketing with compelling content, brand voice, increasing sales and conversions with persuasive copy.", img4, "Copywriting service");
     servicesContainer.appendChild(service1);
 
     // Service 2
@@ -26,7 +27,7 @@ export default function createServicesSection() {
     servicesContainer.appendChild(service2);
 
     // Service 3
-    const service3 = createService("Digital Marketing", "Our agency offers detailed online marketing whether it\'s SEO, PPC ,social media or content creation.We customize strategies to drive traffic,leads, conversions, ensuring measurable outcomes.", img3, "Digital Marketing service image");
+    const service3 = createService("Digital Marketing", "We offer detailed online marketing whether it\'s SEO, PPC ,social media or content creation.We customize strategies to drive traffic,leads, conversions.", img3, "Digital Marketing service image");
     servicesContainer.appendChild(service3);
 
     // Service 4

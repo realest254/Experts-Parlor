@@ -97,10 +97,28 @@ function createHomePage() {
     document.body.appendChild(backToTopIcon);
 
     function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        const startOffset = window.pageYOffset;
+        const distance = -startOffset; // Distance to scroll is negative of current scroll position
+        const duration = 1550; // Adjust the duration as needed (in milliseconds)
+        const startTime = performance.now();
+    
+        function scrollStep(timestamp) {
+            const currentTime = timestamp || performance.now();
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1); // Ensure progress does not exceed 1
+            window.scrollTo(0, startOffset + distance * easeInOutCubic(progress));
+    
+            if (elapsed < duration) {
+                window.requestAnimationFrame(scrollStep);
+            }
+        }
+    
+        // Easing function for smooth acceleration and deceleration
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t ** 3 : 1 - ((-2 * t + 2) ** 3) / 2;
+        }
+    
+        window.requestAnimationFrame(scrollStep);
     }
 
     // Add logic to toggle visibility of back-to-top arrow based on scroll position
@@ -163,7 +181,7 @@ function createHomePage() {
     bgImageObserver.observe(section); // Start observing the section containing the background image
 
     bgImage.onload = function() {
-        section.style.transition = 'background-image 0.5s';
+        section.style.transition = 'background-image 0.1s'; // Adjust the transition duration as needed
         section.style.backgroundColor = 'transparent';
         section.style.backgroundImage = `url(${homeBg})`;
     };
@@ -205,21 +223,40 @@ function createHomePage() {
     window.addEventListener('DOMContentLoaded', adjustLayout);
     window.addEventListener('resize', adjustLayout);
     handleItemClick();
+
+    createServicesSection();
+    createAboutMeSection();
+    createTestimonialSection();
+    createContactSection();
+    createFooter();
 }
 
 function smoothScroll(target) {
     const targetElement = document.getElementById(target);
     if (targetElement) {
-        window.scrollTo({
-            top: targetElement.offsetTop,
-            behavior: 'smooth'
-        });
+        const targetOffset = targetElement.getBoundingClientRect().top;
+        const startOffset = window.pageYOffset;
+        const distance = targetOffset - startOffset;
+        const duration = 1550; // Adjust the duration as needed (in milliseconds)
+        const startTime = performance.now();
+
+        function scrollStep(timestamp) {
+            const currentTime = timestamp || performance.now();
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1); // Ensure progress does not exceed 1
+            window.scrollTo(0, startOffset + distance * easeInOutCubic(progress));
+
+            if (elapsed < duration) {
+                window.requestAnimationFrame(scrollStep);
+            }
+        }
+
+        // Easing function for smooth acceleration and deceleration
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t ** 3 : 1 - ((-2 * t + 2) ** 3) / 2;
+        }
+
+        window.requestAnimationFrame(scrollStep);
     }
 }
-
 createHomePage();
-createServicesSection();
-createAboutMeSection();
-createTestimonialSection();
-createContactSection();
-createFooter();
