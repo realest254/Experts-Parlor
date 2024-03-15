@@ -1,6 +1,6 @@
 import '../cssFiles/main.css';
 import homeBg from '../images/homeBg1.jpeg';
-import logo from '../images/logo.jpg';
+import logo from '../images/latestLogo.jpg';
 import upArrow from '../images/arrow-up.svg';
 import createServicesSection from './services.js';
 import createAboutMeSection from './about.js';
@@ -99,15 +99,16 @@ function createHomePage() {
     function scrollToTop() {
         const startOffset = window.pageYOffset;
         const distance = -startOffset; // Distance to scroll is negative of current scroll position
-        const duration = 1550; // Adjust the duration as needed (in milliseconds)
+        const duration = 1600;
         const startTime = performance.now();
     
         function scrollStep(timestamp) {
             const currentTime = timestamp || performance.now();
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1); // Ensure progress does not exceed 1
-            window.scrollTo(0, startOffset + distance * easeInOutCubic(progress));
-    
+            const interpolatedValue = startOffset + distance * easeInOutCubic(progress); // Linear interpolation
+            window.scrollTo(0, interpolatedValue);
+        
             if (elapsed < duration) {
                 window.requestAnimationFrame(scrollStep);
             }
@@ -120,6 +121,7 @@ function createHomePage() {
     
         window.requestAnimationFrame(scrollStep);
     }
+    
 
     // Add logic to toggle visibility of back-to-top arrow based on scroll position
     function handleScroll() {
@@ -136,7 +138,7 @@ function createHomePage() {
     }
 
     window.addEventListener('scroll', handleScroll); // Listen for scroll events to handle arrow visibility
-    handleScroll(); // Call handleScroll once to initialize arrow visibility
+    handleScroll(); 
 
 
     // Add click event listener to back to top icon
@@ -232,28 +234,28 @@ function createHomePage() {
 }
 
 function smoothScroll(target) {
+    // Define easing function
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t ** 3 : 1 - ((-2 * t + 2) ** 3) / 2;
+    }
+
     const targetElement = document.getElementById(target);
     if (targetElement) {
         const targetOffset = targetElement.getBoundingClientRect().top;
         const startOffset = window.pageYOffset;
         const distance = targetOffset - startOffset;
-        const duration = 1550; // Adjust the duration as needed (in milliseconds)
+        const duration = 1550; 
         const startTime = performance.now();
 
         function scrollStep(timestamp) {
             const currentTime = timestamp || performance.now();
             const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1); // Ensure progress does not exceed 1
+            const progress = Math.min(elapsed / duration, 1); 
             window.scrollTo(0, startOffset + distance * easeInOutCubic(progress));
 
             if (elapsed < duration) {
                 window.requestAnimationFrame(scrollStep);
             }
-        }
-
-        // Easing function for smooth acceleration and deceleration
-        function easeInOutCubic(t) {
-            return t < 0.5 ? 4 * t ** 3 : 1 - ((-2 * t + 2) ** 3) / 2;
         }
 
         window.requestAnimationFrame(scrollStep);
