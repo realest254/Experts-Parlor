@@ -1,5 +1,5 @@
 import '../cssFiles/main.css';
-import homeBg from '../images/homeBg.jpeg';
+import homeBg from '../images/homeBg1.jpeg';
 import logo from '../images/logo.jpg';
 import upArrow from '../images/arrow-up.svg';
 import createServicesSection from './services.js';
@@ -11,7 +11,9 @@ import createFooter from './footer.js';
 function createHomePage() {
     const section = document.createElement('section');
     section.classList.add('homepage');
-    section.style.backgroundImage = `url(${homeBg}`;
+
+    // Initially set a background color to match the expected background color
+    section.style.backgroundColor = '#222121';
 
     const navigationDiv = document.createElement('div');
     navigationDiv.classList.add('navigation');
@@ -21,10 +23,10 @@ function createHomePage() {
 
     // Create and append h1 and p elements for company name and description
     const companyName = document.createElement('h1');
-    companyName.innerHTML = 'JEERMASCRIPT<br>MARKETING<br><span>AGENCY</>';
+    companyName.innerHTML = 'JEERMASCRIPT<br>MARKETING<br><span>AGENCY</span>';
 
     const companyDescription = document.createElement('p');
-    companyDescription.textContent = 'Monetizing idea\'s through words.';
+    companyDescription.textContent = 'Monetizing ideas through words.';
 
     const companySeparator = document.createElement('div');
     companySeparator.classList.add('separator');
@@ -32,7 +34,6 @@ function createHomePage() {
     companyInfo.appendChild(companyName);
     companyInfo.appendChild(companySeparator);
     companyInfo.appendChild(companyDescription);
-
 
     const nav = document.createElement('nav');
     nav.classList.add('large-screen');
@@ -57,15 +58,15 @@ function createHomePage() {
 
     nav.appendChild(ul);
     navigationDiv.appendChild(nav);
-    
+
     // Create the image container
     const logoContainer = document.createElement('div');
     logoContainer.classList.add('logo-container');
 
     // Create the logo image element
     const logoImage = document.createElement('img');
-    logoImage.src = logo; // Replace 'path_to_your_logo_image' with the actual path to your logo image
-    logoImage.alt = 'Company Logo'; // Set the alt attribute for accessibility
+    logoImage.src = logo;
+    logoImage.alt = 'Company Logo';
     logoImage.style.width = '50px';
     logoImage.style.height = '50px';
 
@@ -86,13 +87,13 @@ function createHomePage() {
     backToTopIcon.classList.add('back-to-top');
 
     const upImage = document.createElement('img');
-    upImage.src = upArrow; 
+    upImage.src = upArrow;
     upImage.alt = 'up arrow'; // Set the alt attribute for accessibility
     upImage.style.width = '40px';
     upImage.style.height = '40px';
 
     backToTopIcon.appendChild(upImage);
-    
+
     document.body.appendChild(backToTopIcon);
 
     function scrollToTop() {
@@ -128,7 +129,6 @@ function createHomePage() {
     section.appendChild(logoContainer);
     section.appendChild(companyInfo);
 
-
     document.body.appendChild(section);
 
     function toggleMenu() {
@@ -146,6 +146,27 @@ function createHomePage() {
             hamburgerMenu.classList.add('inactive');
         }
     }
+
+    // Lazy loading for background image
+    const bgImage = new Image();
+    bgImage.src = ''; // Set an empty source initially
+
+    const bgImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                bgImage.src = homeBg; // Set the source only when the image is in view
+                observer.unobserve(entry.target); // Stop observing once the image is loaded
+            }
+        });
+    });
+
+    bgImageObserver.observe(section); // Start observing the section containing the background image
+
+    bgImage.onload = function() {
+        section.style.transition = 'background-image 0.5s';
+        section.style.backgroundColor = 'transparent';
+        section.style.backgroundImage = `url(${homeBg})`;
+    };
 
     function adjustLayout() {
         const nav = document.querySelector('.navigation nav');

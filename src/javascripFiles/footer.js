@@ -16,19 +16,18 @@ export default function createFooter() {
     const socialMediaLinks = [
         { name: 'Twitter', icon: twiterIcon, url: 'https://twitter.com/Jermaine_writes' },
         { name: 'Instagram', icon: instagramIcon, url: 'https://www.instagram.com/jeermascript' },
-        // Add more social media platforms as needed
     ];
 
     socialMediaLinks.forEach(link => {
         const icon = document.createElement('a');
         icon.href = link.url;
-        icon.target = '_blank'; // Open link in new tab
+        icon.target = '_blank';
         icon.classList.add('social-media-icon');
 
         // Create image element for the icon
         const img = document.createElement('img');
         img.src = link.icon;
-        img.alt = link.name + ' icon'; // Set alt attribute for accessibility
+        img.alt = link.name + ' icon'; 
 
         // Append image to the icon element
         icon.appendChild(img);

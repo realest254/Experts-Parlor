@@ -181,15 +181,13 @@ export default function createTestimonialSection() {
         distY = 0;
     }
 
-    // Append testimonial container to body
     document.body.appendChild(testimonialContainer);
 
     updateTestimonials();
 
-    // Initial setup
+    
     handleResize();
 
-    // Event listeners
     window.addEventListener('resize', handleResize);   
 
     testimonialContainer.addEventListener('touchstart', handleTouchStart, false);

@@ -61,7 +61,8 @@
 
 
 .testimonial.active {
-    width: min(400px ,50%);
+    width: min(400px ,65%);
+    height: 60%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -199,8 +200,8 @@
     .testimonial {
         display: none;
         position: relative;
-        width: 75%; /* Adjust as needed */
-        height: 50%; /* Adjust as needed */
+        width: 80%; /* Adjust as needed */
+        height: 60%; /* Adjust as needed */
         background-color: #083344;
         border-radius: 20px;
         padding: 10px;

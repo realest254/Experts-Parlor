@@ -1,6 +1,5 @@
-// Import necessary resources
 import '../cssFiles/about.css';
-import jermaine from '../images/jermaine.jpg'; // Replace 'my-image.jpg' with your image file path
+import jermaine from '../images/jermaine.jpg'; 
 
 // Function to create the "About Me" section
 export default function createAboutMeSection() {
@@ -21,7 +20,7 @@ export default function createAboutMeSection() {
     // Create and add the image
     const aboutImage = document.createElement('img');
     aboutImage.src = jermaine;
-    aboutImage.alt = "My Image";
+    aboutImage.alt = "Jermascript CEO Image";
     contentContainer.appendChild(aboutImage);
 
     // Create and add the content
