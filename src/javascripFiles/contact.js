@@ -2,6 +2,8 @@ import '../cssFiles/contact.css'; // Import the CSS file for styling
 
 // Function to create the contact section
 export default function createContactSection() {
+    const sectionsHolder = document.querySelector('.sections-holder'); // Assuming sectionsHolder is accessible globally
+
     // Create the contact section element
     const contactSection = document.createElement('section');
     contactSection.classList.add('contact-section');
@@ -91,7 +93,7 @@ export default function createContactSection() {
     contactSection.appendChild(contactFormDiv);
 
     // Append the contact section to the body
-    document.body.appendChild(contactSection);
+    sectionsHolder.appendChild(contactSection);
 
     // Event listener for form submission
     form.addEventListener('submit', function(e) {

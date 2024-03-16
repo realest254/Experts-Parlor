@@ -2,9 +2,11 @@ import '../cssFiles/services.css';
 import img1 from '../images/seo.jpg';
 import img2 from '../images/webdes2.0.jpg';
 import img3 from '../images/webdesign.jpg';
-import img4 from '../images/copywrite.jpg'; 
+import img4 from '../images/copywrite.jpg';
 
 export default function createServicesSection() {
+    const sectionsHolder = document.querySelector('.sections-holder'); // Assuming sectionsHolder is accessible globally
+
     const servicesSection = document.createElement('section');
     servicesSection.classList.add('services-section');
     servicesSection.id = 'services';
@@ -27,7 +29,7 @@ export default function createServicesSection() {
     servicesContainer.appendChild(service2);
 
     // Service 3
-    const service3 = createService("Digital Marketing", "We offer detailed online marketing whether it\'s SEO, PPC ,social media or content creation.We customize strategies to drive traffic,leads, conversions.", img3, "Digital Marketing service image");
+    const service3 = createService("Digital Marketing", "We offer detailed online marketing whether it's SEO, PPC ,social media or content creation.We customize strategies to drive traffic,leads, conversions.", img3, "Digital Marketing service image");
     servicesContainer.appendChild(service3);
 
     // Service 4
@@ -37,8 +39,8 @@ export default function createServicesSection() {
     // Append the services container to the services section
     servicesSection.appendChild(servicesContainer);
 
-    // Append the services section to the body
-    document.body.appendChild(servicesSection);
+    // Append the services section to the sectionsHolder
+    sectionsHolder.appendChild(servicesSection);
 }
 
 // Helper function to create a service container

@@ -1,8 +1,10 @@
 import '../cssFiles/about.css';
-import jermaine from '../images/jermaine.jpg'; 
+import jermaine from '../images/jermaine.jpg';
 
 // Function to create the "About Me" section
 export default function createAboutMeSection() {
+    const sectionsHolder = document.querySelector('.sections-holder'); // Assuming sectionsHolder is accessible globally
+
     // Create the section element
     const aboutSection = document.createElement('section');
     aboutSection.classList.add('about-section');
@@ -39,8 +41,7 @@ export default function createAboutMeSection() {
     const paragraph4 = document.createElement('p');
     paragraph4.textContent = "Thus began my journey in marketing...";
 
-
-    aboutContent.appendChild(paragraph1)
+    aboutContent.appendChild(paragraph1);
     aboutContent.appendChild(paragraph2);
     aboutContent.appendChild(paragraph3);
     aboutContent.appendChild(paragraph4);
@@ -49,6 +50,6 @@ export default function createAboutMeSection() {
     // Append content container to about section
     aboutSection.appendChild(contentContainer);
 
-    // Append the about section to the body
-    document.body.appendChild(aboutSection);
+    // Append the about section to the sectionsHolder
+    sectionsHolder.appendChild(aboutSection);
 }

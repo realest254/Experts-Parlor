@@ -10,6 +10,8 @@ import createFooter from './footer.js';
 
 
 function createHomePage() {
+    const sectionHolder = document.querySelector('.sections-holder'); // Select the sections-holder
+
     const section = document.createElement('section');
     section.classList.add('homepage');
 
@@ -95,6 +97,7 @@ function createHomePage() {
 
     backToTopIcon.appendChild(upImage);
 
+    // Append the back to top icon to the body
     document.body.appendChild(backToTopIcon);
 
     function scrollToTop() {
@@ -102,27 +105,26 @@ function createHomePage() {
         const distance = -startOffset; // Distance to scroll is negative of current scroll position
         const duration = 1600;
         const startTime = performance.now();
-    
+
         function scrollStep(timestamp) {
             const currentTime = timestamp || performance.now();
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1); // Ensure progress does not exceed 1
             const interpolatedValue = startOffset + distance * easeInOutCubic(progress); // Linear interpolation
             window.scrollTo(0, interpolatedValue);
-        
+
             if (elapsed < duration) {
                 window.requestAnimationFrame(scrollStep);
             }
         }
-    
+
         // Easing function for smooth acceleration and deceleration
         function easeInOutCubic(t) {
             return t < 0.5 ? 4 * t ** 3 : 1 - ((-2 * t + 2) ** 3) / 2;
         }
-    
+
         window.requestAnimationFrame(scrollStep);
     }
-    
 
     // Add logic to toggle visibility of back-to-top arrow based on scroll position
     function handleScroll() {
@@ -139,8 +141,7 @@ function createHomePage() {
     }
 
     window.addEventListener('scroll', handleScroll); // Listen for scroll events to handle arrow visibility
-    handleScroll(); 
-
+    handleScroll(); // Initial call to handleScroll to set initial state
 
     // Add click event listener to back to top icon
     backToTopIcon.addEventListener('click', scrollToTop);
@@ -150,7 +151,7 @@ function createHomePage() {
     section.appendChild(logoContainer);
     section.appendChild(companyInfo);
 
-    document.body.appendChild(section);
+    sectionHolder.appendChild(section);
 
     function toggleMenu() {
         const nav = document.querySelector('.navigation nav');
@@ -192,7 +193,6 @@ function createHomePage() {
     function adjustLayout() {
         const nav = document.querySelector('.navigation nav');
         const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const section = document.querySelector('.homepage');
 
         if (window.innerWidth < 769) {
             nav.classList.remove('large-screen');

@@ -4,13 +4,14 @@ import fitness from '../images/fitnes.jpg';
 import technician from '../images/technician.jpg';
 
 export default function createTestimonialSection() {
+    const sectionsHolder = document.querySelector('.sections-holder'); // Assuming sectionsHolder is accessible globally
 
     let startX = null;
     let startY = null;
     let distX = 0;
     let distY = 0;
     const threshold = 50;
-    
+
     const testimonialContainer = document.createElement('section');
     testimonialContainer.id = 'testimonials';
     testimonialContainer.classList.add('testimonial-container');
@@ -181,14 +182,13 @@ export default function createTestimonialSection() {
         distY = 0;
     }
 
-    document.body.appendChild(testimonialContainer);
+    sectionsHolder.appendChild(testimonialContainer);
 
     updateTestimonials();
 
-    
     handleResize();
 
-    window.addEventListener('resize', handleResize);   
+    window.addEventListener('resize', handleResize);
 
     testimonialContainer.addEventListener('touchstart', handleTouchStart, false);
     testimonialContainer.addEventListener('touchmove', handleTouchMove, false);

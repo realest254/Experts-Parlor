@@ -3,6 +3,7 @@ import twiterIcon from '../images/x-twitter.svg';
 import instagramIcon from '../images/instagram.svg';
 
 export default function createFooter() {
+    const sectionHolder = document.querySelector(".sections-holder");
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
@@ -47,5 +48,5 @@ export default function createFooter() {
     footerContent.appendChild(companyInfo);
 
     footer.appendChild(footerContent);
-    document.body.appendChild(footer);
+    sectionHolder.appendChild(footer);
 }
