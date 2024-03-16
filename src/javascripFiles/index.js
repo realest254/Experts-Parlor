@@ -234,6 +234,12 @@ function createHomePage() {
     createFooter();
 }
 
+// Check if the device is a mobile device
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Function to handle smooth scrolling with reduced speed
 function smoothScroll(target) {
     // Define easing function
     function easeInOutCubic(t) {
@@ -245,7 +251,13 @@ function smoothScroll(target) {
         const targetOffset = targetElement.getBoundingClientRect().top;
         const startOffset = window.pageYOffset;
         const distance = targetOffset - startOffset;
-        const duration = 1550; 
+        let duration = 1550; // Default duration
+
+        // Reduce duration for finger-scrolling on mobile devices
+        if (isMobileDevice() && isFingerScroll()) {
+            duration = 3000; // Adjust duration for finger-scrolling on mobile devices
+        }
+
         const startTime = performance.now();
 
         function scrollStep(timestamp) {
@@ -262,4 +274,28 @@ function smoothScroll(target) {
         window.requestAnimationFrame(scrollStep);
     }
 }
+
+// Function to detect finger-scrolling on mobile devices
+function isFingerScroll() {
+    let lastTouchY;
+    document.addEventListener('touchmove', function(e) {
+        const currentY = e.touches[0].clientY;
+        const deltaY = Math.abs(currentY - lastTouchY);
+        lastTouchY = currentY;
+        if (deltaY > 5) { // Adjust the threshold as needed
+            return true; // Finger-scrolling detected
+        }
+    });
+    return false;
+}
+
+// Add smooth scrolling behavior to all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+        event.preventDefault();
+        const target = this.getAttribute('href').substring(1); // Remove the '#' character
+        smoothScroll(target);
+    });
+});
+
 createHomePage();
