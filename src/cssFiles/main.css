@@ -13,7 +13,7 @@
 
 /* Homepage container */
 .homepage {
-    min-height: 100svh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;

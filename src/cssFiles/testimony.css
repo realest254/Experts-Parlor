@@ -229,7 +229,7 @@
     }
     .indicators {
         position: absolute;
-        bottom: 20px;
+        bottom: 1em;
         display: flex;
         margin: 0 auto;
     }
