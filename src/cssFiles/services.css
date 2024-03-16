@@ -3,6 +3,7 @@
     background-color: rgb(34, 33, 33);
 }
 .services-container {
+    min-height: 100vh;
     width: 100%;
     padding: 20px;
     display: flex;

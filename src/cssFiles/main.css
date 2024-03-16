@@ -230,7 +230,7 @@
         align-items: flex-end;
     }
     .homepage {
-        width: 100%;
+        width: 100vw;
         background-size: cover;
         background-position: left;
         }
