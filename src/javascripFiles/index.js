@@ -255,7 +255,7 @@ function smoothScroll(target) {
 
         // Reduce duration for finger-scrolling on mobile devices
         if (isMobileDevice() && isFingerScroll()) {
-            duration = 3000; // Adjust duration for finger-scrolling on mobile devices
+            duration = 10000; // Adjust duration for finger-scrolling on mobile devices
         }
 
         const startTime = performance.now();
@@ -282,7 +282,7 @@ function isFingerScroll() {
         const currentY = e.touches[0].clientY;
         const deltaY = Math.abs(currentY - lastTouchY);
         lastTouchY = currentY;
-        if (deltaY > 5) { // Adjust the threshold as needed
+        if (deltaY > 3) { 
             return true; // Finger-scrolling detected
         }
     });
