@@ -8,6 +8,7 @@ import createContactSection from './contact.js';
 import createTestimonialSection from './testimony.js';
 import createFooter from './footer.js';
 
+
 function createHomePage() {
     const section = document.createElement('section');
     section.classList.add('homepage');
@@ -184,7 +185,7 @@ function createHomePage() {
 
     bgImage.onload = function() {
         section.style.transition = 'background-image 0.1s'; // Adjust the transition duration as needed
-        section.style.backgroundColor = 'transparent';
+        section.style.backgroundColor = 'none';
         section.style.backgroundImage = `url(${homeBg})`;
     };
 

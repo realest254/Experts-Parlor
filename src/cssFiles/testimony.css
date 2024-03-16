@@ -1,9 +1,15 @@
 /* Common styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .testimonial-container {
     position: relative;
     width: 100%;
     margin: auto;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -62,7 +68,7 @@
 
 .testimonial.active {
     width: min(400px ,65%);
-    height: 60%;
+    min-height: 60%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -188,7 +194,7 @@
         position: relative;
         width: 100%;
         margin: auto;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -200,8 +206,8 @@
     .testimonial {
         display: none;
         position: relative;
-        width: 80%; /* Adjust as needed */
-        height: 60%; /* Adjust as needed */
+        width: 80%; 
+        height: 60%; 
         background-color: #083344;
         border-radius: 20px;
         padding: 10px;
@@ -211,8 +217,8 @@
 
     .testimonial-container h2 {
         color: gold;
-        font-size: 1.5em;
-        margin-bottom: 1.5em;
+        font-size: 1.2em;
+        margin-bottom: 1.2em;
         margin-top: 3em;
         white-space: nowrap;
     }

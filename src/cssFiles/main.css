@@ -13,7 +13,7 @@
 
 /* Homepage container */
 .homepage {
-    height: 100svh;
+    min-height: 100svh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,12 @@
    
     display: flex;
     flex-direction: column;
-    gap: 4em;
+    gap: 30%;
 }
 
 
 .home h1 {
     text-wrap: nowrap;
-    line-height: 1.2em;
 }
 
 .navigation {
@@ -84,24 +83,24 @@
 
 /* Active state for hamburger menu */
 .hamburger-menu.active .bar:nth-child(1) {
-    animation: ease .7s top forwards;
+    animation: ease .3s top forwards;
 }
 .hamburger-menu.inactive .bar:nth-child(1) {
-    animation: ease .7s bottom-2 forwards;
+    animation: ease .3s bottom-2 forwards;
 }
 
 .hamburger-menu.active .bar:nth-child(2) {
-    animation: ease .7s scaled forwards;
+    animation: ease .3s scaled forwards;
 }
 .hamburger-menu.inactive .bar:nth-child(2) {
-    animation: ease .7s scaled-2 forwards;;
+    animation: ease .3s scaled-2 forwards;;
 }
 
 .hamburger-menu.active .bar:nth-child(3) {
-    animation: ease .7s bottom forwards;
+    animation: ease .3s bottom forwards;
 }
 .hamburger-menu.inactive .bar:nth-child(3) {
-    animation: ease .7s bottom-2 forwards;
+    animation: ease .3s bottom-2 forwards;
 }
 
 @keyframes top {
@@ -231,12 +230,12 @@
         align-items: flex-end;
     }
     .homepage {
+        width: 100%;
         background-size: cover;
         background-position: left;
         }
     .home h1 {
         text-wrap: nowrap;
-        line-height: 1.8em;
         font-family: 'cinzel';
         font-size: 2em; /* Adjust font size as needed */
         margin-bottom: 10px; /* Add spacing between h1 and p tag */
@@ -352,8 +351,8 @@
 /* Back to top icon */
 .back-to-top {
     position: fixed;
-    bottom: 35px;
-    right: 8px;
+    bottom: 1em;
+    right: 1em;
     background-color: rgba(0, 0, 0, 0.2);
     width: 40px;
     height: 40px;
@@ -375,3 +374,22 @@
 }
 
 
+.loader {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #25b09b;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {to{transform: rotate(1turn)}}
