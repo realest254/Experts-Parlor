@@ -20,8 +20,28 @@
         <link rel="canonical" href="https://realest254.github.io/Jeermascript-Agency/"> <!-- Replace with your website URL -->
         
     </head>
+    <style>
+    .sections-holder {
+        max-width: 1200px; /* Set maximum width to contain the sections */
+        margin: 0 auto; /* Center the container horizontally */
+        display: flex; /* Use flexbox to align sections horizontally */
+        flex-direction: column; /* Stack sections vertically */
+    }
+
+    /* Responsive styling for smaller screens */
+    @media screen and (max-width: 768px) {
+        .sections-holder {
+            max-width: 100%; /* Set maximum width to 100% for smaller screens */
+            /* Adjust padding for smaller screens */
+        }
+    }
+
+    </style>
     
 <body>
-    <script src="bundle.js" defer></script>
+    <div class="sections-holder">
+
+    </div>
+    <script src="bundle.js"></script>
 </body>
 </html>
