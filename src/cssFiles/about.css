@@ -3,7 +3,6 @@
     width: 100%;
     padding: 20px;
     background-color: rgb(34, 33, 33);
-    border-top: 1px solid #ccc;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
