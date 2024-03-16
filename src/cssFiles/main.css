@@ -257,8 +257,8 @@
         justify-content: center;
         align-items: center;
         gap: 5em;
-        width: 70vw;
-        height: 80vh;
+        width: 70%;
+        height: 30rem;
         background-color: rgba(0, 0, 0, 0.6); /* Background color */
         border-radius: 10px; /* Rounded corners */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
