@@ -227,6 +227,11 @@ function createHomePage() {
     window.addEventListener('resize', adjustLayout);
     handleItemClick();
 
+    createServicesSection();
+    createAboutMeSection();
+    createTestimonialSection();
+    createContactSection();
+    createFooter();
 }
 
 function smoothScroll(target) {
@@ -258,8 +263,3 @@ function smoothScroll(target) {
     }
 }
 createHomePage();
-createServicesSection();
-createAboutMeSection();
-createTestimonialSection();
-createContactSection();
-createFooter();
