@@ -255,7 +255,7 @@ function smoothScroll(target) {
 
         // Reduce duration for finger-scrolling on mobile devices
         if (isMobileDevice() && isFingerScroll()) {
-            duration = 10000; // Adjust duration for finger-scrolling on mobile devices
+            duration = 20000; // Adjust duration for finger-scrolling on mobile devices
         }
 
         const startTime = performance.now();
