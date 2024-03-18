@@ -1,7 +1,7 @@
 /* Reset styles */
 @font-face {
     font-family: 'cinzel'; /* Specify the name you want to use for the font */
-    src: url('../fonts/CinzelDecorative-Black.ttf') format('ttf');
+    src: url('../fonts/CinzelDecorative-Black.ttf') format('truetype'); 
     font-weight: normal; /* Specify the font weight */
     font-style: normal; /* Specify the font style */
 }
@@ -69,6 +69,7 @@
     display: none;
     height: 25px;
     width: 25px;
+    margin-right: 1em;
 }
 
 .bar {
@@ -217,6 +218,7 @@
     }
     .hamburger-menu {
         display: block;
+        margin-top: .7em;
     }
     
     .small-screen ul {
@@ -257,7 +259,7 @@
         justify-content: center;
         align-items: center;
         gap: 5em;
-        width: 70%;
+        width: 80%;
         height: 30rem;
         background-color: rgba(0, 0, 0, 0.6); /* Background color */
         border-radius: 10px; /* Rounded corners */
