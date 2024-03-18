@@ -1,7 +1,7 @@
 /* Reset styles */
 @font-face {
     font-family: 'cinzel'; /* Specify the name you want to use for the font */
-    src: url('../fonts/CinzelDecorative-Black.ttf') format('truetype'); 
+    src: url('../fonts/CinzelDecorative-Black.ttf') format('ttf'); 
     font-weight: normal; /* Specify the font weight */
     font-style: normal; /* Specify the font style */
 }

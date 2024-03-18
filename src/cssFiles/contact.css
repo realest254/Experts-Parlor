@@ -20,6 +20,13 @@
     padding-top: 10px;
 }
 
+.contact-info h4,h1, span {
+    font-size: 1.3em;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+}
 #contact-heading {
     font-size: 1.5em;
     color: gold;
