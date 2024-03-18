@@ -79,9 +79,9 @@ function createHomePage() {
     const hamburgerMenu = document.createElement('div');
     hamburgerMenu.classList.add('hamburger-menu');
     hamburgerMenu.innerHTML = `
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
     `;
     hamburgerMenu.onclick = toggleMenu;
 
@@ -109,7 +109,7 @@ function createHomePage() {
     function toggleMenu() {
         const nav = document.querySelector('.navigation nav');
         const hamburgerMenu = document.querySelector('.hamburger-menu');
-
+    
         if (nav.classList.contains('inactive')) {
             nav.classList.remove('inactive');
             hamburgerMenu.classList.remove('inactive');
