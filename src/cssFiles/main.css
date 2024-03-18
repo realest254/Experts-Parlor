@@ -141,8 +141,17 @@
         right: 5px;
         margin-top: 15px;
         display: flex;
-        gap: 10px;
         flex-direction: column;
+        list-style: none;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 5em;
+        width: 80%;
+        height: 30rem;
+        background-color: rgba(0, 0, 0, 0.6); /* Background color */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
     }
     .homepage {
         width: 100%;
@@ -162,17 +171,7 @@
     }
 
     .navigation nav ul {
-        list-style: none;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5em;
-        width: 80%;
-        height: 30rem;
-        background-color: rgba(0, 0, 0, 0.6); /* Background color */
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        
     }
     
     
