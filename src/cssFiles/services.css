@@ -76,8 +76,9 @@
     }
     .service-container {
         width: 90%;
+        margin: 20px auto;
         height: auto;
         min-height: 260px;
-        max-height: 300px;
+        max-height: 320px;
     }
 }
