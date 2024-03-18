@@ -223,13 +223,12 @@
     
     .small-screen ul {
         position: absolute;
-        top: 45px;
+        top: 1em;
         right: 5px;
         margin-top: 15px;
         display: flex;
         gap: 10px;
         flex-direction: column;
-        align-items: flex-end;
     }
     .homepage {
         width: 100vw;
@@ -254,7 +253,6 @@
     .navigation nav ul {
         list-style: none;
         margin: 0;
-        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
