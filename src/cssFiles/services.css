@@ -52,6 +52,7 @@
 
 .service-container .service-description {
     width: 70%;
+    height: auto;
     padding: 20px;
     color: #e2e8f0;
 }
@@ -71,8 +72,8 @@
 @media screen and (max-width: 768px) {
     .service-container {
         width: 90%;
-        height: 260px;
+        height: auto;
+        min-height: 260px;
         max-height: 260px;
-        min-height: 250px;
     }
 }
