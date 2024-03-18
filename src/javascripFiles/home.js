@@ -26,7 +26,7 @@ function createHomePage() {
 
     // Create and append h1 and p elements for company name and description
     const companyName = document.createElement('h1');
-    companyName.innerHTML = 'JEERMASCRIPT<br>MARKETING<br><span>AGENCY</span>';
+    companyName.innerHTML = 'JEERMASCRIPT<br>MARKETING<br>AGENCY';
 
     const companyDescription = document.createElement('p');
     companyDescription.textContent = 'Monetizing ideas through words.';
@@ -176,21 +176,6 @@ function createHomePage() {
 
     sectionHolder.appendChild(section);
 
-    function toggleMenu() {
-        const nav = document.querySelector('.navigation nav');
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-
-        if (nav.classList.contains('inactive')) {
-            nav.classList.remove('inactive');
-            hamburgerMenu.classList.remove('inactive');
-            hamburgerMenu.classList.add('active');
-
-        } else {
-            nav.classList.add('inactive');
-            hamburgerMenu.classList.remove('active');
-            hamburgerMenu.classList.add('inactive');
-        }
-    }
 
     // Lazy loading for background image
     const bgImage = new Image();
