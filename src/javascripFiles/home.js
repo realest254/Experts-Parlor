@@ -211,11 +211,13 @@ function createHomePage() {
             nav.classList.add('small-screen');
             nav.classList.add('inactive');
             hamburgerMenu.style.display = 'block';
+            nav.style.display = 'none';
             hamburgerMenu.classList.remove('active');
         } else {
             nav.classList.remove('small-screen');
             nav.classList.add('large-screen');
             nav.classList.remove('inactive');
+            nav.style.display = 'flex';
             hamburgerMenu.style.display = 'none';
         }
     }

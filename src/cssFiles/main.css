@@ -39,7 +39,6 @@
     right: 0px;
     background-color: rgba(0, 0, 0, 0); /* White background with opacity */
     padding: 10px 20px;
-    display: flex;
     align-items: center;
     color: black; /* Black text color */
     border-bottom: 1px solid rgba(247, 243, 243, 0); /* Black border bottom */
@@ -169,10 +168,6 @@
     .small-screen.inactive {
         display: none;
     }
-
-    .navigation nav ul {
-        
-    }
     
     
     .navigation nav ul li a {
@@ -186,9 +181,6 @@
 
 /* Media query for screens larger than 768px */
 @media screen and (min-width: 769px) {
-    .hamburger-menu {
-        display: none;
-    }
     .large-screen{
         width: 100%;
         display: flex;
