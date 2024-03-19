@@ -106,20 +106,24 @@ function createHomePage() {
 
     sectionHolder.appendChild(section); // Append the section to the sections-holder instead of body
 
-    function toggleMenu() {
+    function adjustLayout() {
         const nav = document.querySelector('.navigation nav');
         const hamburgerMenu = document.querySelector('.hamburger-menu');
     
-        if (nav.classList.contains('inactive')) {
-            nav.classList.remove('inactive');
-            hamburgerMenu.classList.remove('inactive');
-            hamburgerMenu.classList.add('active');
-        } else {
-            nav.classList.add('inactive');
+        if (window.innerWidth < 769) {
+            nav.classList.remove('large-screen');
+            nav.classList.add('small-screen');
+            nav.classList.add('inactive'); // Add this line to make the menu initially inactive on small screens
+            hamburgerMenu.style.display = 'block';
             hamburgerMenu.classList.remove('active');
-            hamburgerMenu.classList.add('inactive');
+        } else {
+            nav.classList.remove('small-screen');
+            nav.classList.add('large-screen');
+            nav.classList.remove('inactive'); // Add this line to make sure the menu is initially active on larger screens
+            hamburgerMenu.style.display = 'none';
         }
     }
+ 
 
     function scrollToTop() {
         const startOffset = window.pageYOffset;

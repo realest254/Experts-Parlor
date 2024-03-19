@@ -27,7 +27,7 @@ export default function createContactSection() {
 
     // Email content
     const emailContent = document.createElement('span');
-    emailContent.textContent = ' jeermascriptt@gmail.com';
+    emailContent.textContent = 'info@jeermascriptagency.africa';
     contactInfoDiv.appendChild(emailContent);
 
     // Telephone heading
