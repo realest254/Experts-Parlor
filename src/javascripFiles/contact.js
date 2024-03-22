@@ -1,4 +1,21 @@
 import '../cssFiles/contact.css'; // Import the CSS file for styling
+import accessKey from '../../utils.js';
+
+// Helper function to create input elements
+function createInput(type, placeholder, name, hidden = false) {
+    const input = document.createElement(hidden ? 'input' : type);
+    input.type = type;
+    input.placeholder = placeholder;
+    input.name = name;
+    input.classList.add('input-field');
+    if (type === 'textarea') {
+        input.classList.add('textarea-field');
+    }
+    if (hidden) {
+        input.style.display = 'none'; // Hide the hidden field
+    }
+    return input;
+}
 
 // Function to create the contact section
 export default function createContactSection() {
@@ -64,7 +81,7 @@ export default function createContactSection() {
     const accessKeyInput = document.createElement('input');
     accessKeyInput.type = 'hidden';
     accessKeyInput.name = 'access_key';
-    accessKeyInput.value = 'bb8fe42b-bc68-49fc-93b8-cad10639e2b2';
+    accessKeyInput.value = accessKey;
     form.appendChild(accessKeyInput);
 
     const nameInput = createInput('text', 'Name', 'name');
@@ -78,6 +95,10 @@ export default function createContactSection() {
 
     const messageInput = createInput('textarea', 'Message', 'message');
     form.appendChild(messageInput);
+
+    // Add hidden field for bot detection
+    const botField = createInput('text', '', 'bot-field', true);
+    form.appendChild(botField);
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
@@ -98,52 +119,65 @@ export default function createContactSection() {
     // Event listener for form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Check if bot field is filled (indicating bot submission)
+        if (botField.value !== '') {
+            console.log('Bot detected. Form submission blocked.');
+            return;
+        }
+
+        // Additional validation for required fields
+        if (!nameInput.value || !emailInput.value || !messageInput.value) {
+            console.log('Please fill in all required fields.');
+            return;
+        }
+
+        // Validate email format
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            console.log('Please enter a valid email address.');
+            return;
+        }
+
+        // Submit the form if validation passes
+        submitForm();
+    });
+
+    // Function to submit the form
+    function submitForm() {
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
         const result = document.createElement('div');
         result.id = 'result';
-        result.innerHTML = "Please wait...";
+        result.innerHTML = 'Please wait...';
         contactFormDiv.appendChild(result);
 
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                Accept: 'application/json',
             },
-            body: json
+            body: json,
         })
-        .then(async (response) => {
-            console.log(response);
-            let json = await response.json();
-            if (response.status == 200) {
-                result.innerHTML = "Form submitted successfully";
-            } else {
-                result.innerHTML = json.message;
-            }
-        })
-        .catch(() => {
-            result.innerHTML = "Something went wrong!";
-        })
-        .then(function() {
-            form.reset();
-            setTimeout(() => {
-                result.style.display = "none";
-            }, 3000);
-        });
-    });
-}
-
-// Helper function to create input elements
-function createInput(type, placeholder, name) {
-    const input = document.createElement('input');
-    input.type = type;
-    input.placeholder = placeholder;
-    input.name = name;
-    input.classList.add('input-field');
-    if (type === 'textarea') {
-        input.classList.add('textarea-field');
+            .then(async (response) => {
+                console.log(response);
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = 'Form submitted successfully';
+                } else {
+                    result.innerHTML = jsonResponse.message;
+                }
+            })
+            .catch(() => {
+                result.innerHTML = 'Something went wrong!';
+            })
+            .then(function () {
+                form.reset();
+                setTimeout(() => {
+                    result.style.display = 'none';
+                }, 3000);
+            });
     }
-    return input;
 }

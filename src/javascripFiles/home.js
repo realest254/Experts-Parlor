@@ -20,7 +20,6 @@ function createHomePage() {
 
     const navigationDiv = document.createElement('div');
     navigationDiv.classList.add('navigation');
-    navigationDiv.style.display = 'flex';
 
     const companyInfo = document.createElement('div');
     companyInfo.classList.add('home');
@@ -106,6 +105,24 @@ function createHomePage() {
     section.appendChild(companyInfo);
 
     sectionHolder.appendChild(section); // Append the section to the sections-holder instead of body
+
+    function adjustLayout() {
+        const nav = document.querySelector('.navigation nav');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+    
+        if (window.innerWidth < 769) {
+            nav.classList.remove('large-screen');
+            nav.classList.add('small-screen');
+            nav.classList.add('inactive'); // Add this line to make the menu initially inactive on small screens
+            hamburgerMenu.style.display = 'block';
+            hamburgerMenu.classList.remove('active');
+        } else {
+            nav.classList.remove('small-screen');
+            nav.classList.add('large-screen');
+            nav.classList.remove('inactive'); // Add this line to make sure the menu is initially active on larger screens
+            hamburgerMenu.style.display = 'none';
+        }
+    }
  
 
     function scrollToTop() {
@@ -184,26 +201,6 @@ function createHomePage() {
         section.style.backgroundColor = 'none';
         section.style.backgroundImage = `url(${homeBg})`;
     };
-
-    function adjustLayout() {
-        const nav = document.querySelector('.navigation nav');
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-
-        if (window.innerWidth < 769) {
-            nav.classList.remove('large-screen');
-            nav.classList.add('small-screen');
-            nav.classList.add('inactive');
-            hamburgerMenu.style.display = 'block';
-            nav.style.display = 'none';
-            hamburgerMenu.classList.remove('active');
-        } else {
-            nav.classList.remove('small-screen');
-            nav.classList.add('large-screen');
-            nav.classList.remove('inactive');
-            nav.style.display = 'flex';
-            hamburgerMenu.style.display = 'none';
-        }
-    }
 
     function handleItemClick() {
         const nav = document.querySelector('.navigation nav');
