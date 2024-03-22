@@ -124,3 +124,14 @@ textarea:focus {
         margin-bottom: 10px;
     }
 }
+/* Style for invalid inputs */
+input:invalid,
+textarea:invalid {
+  border-color: red; /* Change border color to red for invalid inputs */
+}
+
+/* Style for error messages */
+.error-message {
+  color: red; /* Set text color to red for error messages */
+  font-size: 12px; /* Adjust font size for error messages */
+}

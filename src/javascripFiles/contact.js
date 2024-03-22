@@ -3,18 +3,51 @@ import accessKey from '../../utils.js';
 
 // Helper function to create input elements
 function createInput(type, placeholder, name, hidden = false) {
-    const input = document.createElement(hidden ? 'input' : type);
-    input.type = type;
-    input.placeholder = placeholder;
-    input.name = name;
-    input.classList.add('input-field');
-    if (type === 'textarea') {
-        input.classList.add('textarea-field');
+    if (type === 'tel') {
+        // Create input element for telephone number
+        const input = document.createElement('input');
+        input.type = 'tel';
+        input.placeholder = placeholder;
+        input.name = name;
+        input.classList.add('input-field');
+        if (hidden) {
+            input.style.display = 'none'; // Hide the hidden field
+        }
+        // Add validation for tel input
+        input.addEventListener('input', function() {
+            const telInputs = document.querySelectorAll('input[type="tel"]');
+            const telErrorMessage = document.getElementById('tel-error-message');
+
+            // Check if there are two tel inputs
+            if (telInputs.length === 2) {
+                // Display error message for bot submission
+                telErrorMessage.textContent = 'Invalid form submission';
+            } else {
+                // Clear error message
+                telErrorMessage.textContent = '';
+
+                // Validate length of telephone number
+                if (this.value.length < 8 || this.value.length > 15) {
+                    this.setCustomValidity('Telephone number must be between 8 and 15 characters');
+                } else {
+                    this.setCustomValidity(''); // Clear custom validity
+                }
+            }
+        });
+
+        return input;
+    } else {
+        // Handle other input types (fallback)
+        const input = document.createElement('input');
+        input.type = type;
+        input.placeholder = placeholder;
+        input.name = name;
+        input.classList.add('input-field');
+        if (hidden) {
+            input.style.display = 'none'; // Hide the hidden field
+        }
+        return input;
     }
-    if (hidden) {
-        input.style.display = 'none'; // Hide the hidden field
-    }
-    return input;
 }
 
 // Function to create the contact section
@@ -90,15 +123,18 @@ export default function createContactSection() {
     const emailInput = createInput('email', 'Email', 'email');
     form.appendChild(emailInput);
 
-    const telInput = createInput('tel', 'Telephone', 'tel');
-    form.appendChild(telInput);
+    const telInput1 = createInput('tel', 'Telephone', 'tel', true); // Hidden tel input
+    form.appendChild(telInput1);
+
+    const telInput2 = createInput('tel', 'Telephone', 'tel'); // Visible tel input
+    form.appendChild(telInput2);
 
     const messageInput = createInput('textarea', 'Message', 'message');
     form.appendChild(messageInput);
 
-    // Add hidden field for bot detection
-    const botField = createInput('text', '', 'bot-field', true);
-    form.appendChild(botField);
+    const telErrorMessage = document.createElement('span');
+    telErrorMessage.id = 'tel-error-message'; // Element to show error message
+    contactFormDiv.appendChild(telErrorMessage);
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
@@ -120,22 +156,14 @@ export default function createContactSection() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Check if bot field is filled (indicating bot submission)
-        if (botField.value !== '') {
-            console.log('Bot detected. Form submission blocked.');
-            return;
-        }
-
         // Additional validation for required fields
         if (!nameInput.value || !emailInput.value || !messageInput.value) {
-            console.log('Please fill in all required fields.');
             return;
         }
 
         // Validate email format
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(emailInput.value)) {
-            console.log('Please enter a valid email address.');
             return;
         }
 
