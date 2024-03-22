@@ -39,6 +39,7 @@
     right: 0px;
     background-color: rgba(0, 0, 0, 0); /* White background with opacity */
     padding: 10px 20px;
+    display: flex;
     align-items: center;
     color: black; /* Black text color */
     border-bottom: 1px solid rgba(247, 243, 243, 0); /* Black border bottom */
