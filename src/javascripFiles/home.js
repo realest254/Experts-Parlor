@@ -26,7 +26,7 @@ function createHomePage() {
 
     // Create and append h1 and p elements for company name and description
     const companyName = document.createElement('h1');
-    companyName.innerHTML = 'JEERMASCRIPT<br>MARKETING<br>AGENCY';
+    companyName.innerHTML = 'JEERMASCRIPT<br>AGENCY';
 
     const companyDescription = document.createElement('p');
     companyDescription.textContent = 'Monetizing ideas through words.';
